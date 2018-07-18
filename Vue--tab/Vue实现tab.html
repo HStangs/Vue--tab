@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+    <div id="tab">
+        <h3 class="head"><a href="#">国内新闻每日排行</a></h3>
+        <ul class="title">
+            <li v-for="(demo,index) in title" :class="{'borderChange':index == num}" @mouseenter="tab(index)">{{ demo}}</li>
+        </ul>
+        <div class="wrap">
+            <div v-for='(tabCon,index) in content' v-show=" index == num">            
+                <div v-for='(tabCon,index) in content[num]'><span>{{ index+1 }}</span><a href="">{{ tabCon }}</a></div>           
+            </div>
+        </div>
+    </div>
+
+<script src="vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+    el: '#tab',
+    data: {
+        title: ["今天", "昨天","一周"],
+        content: [["李克强就电影《我不是药神》引热议作批示","云南女厅官被指是老领导情人 落马后拉下四个男人","中国“唯一不怕水淹”的青岛 是因德国造下水道","奖励生育真来了 这省率先提出对生二孩家庭奖励","包钢两任董事长被查 原建设部长巨额财产来源不明"],
+                      ["去香港有了新规定 小心被罚50万甚至坐牢","湖北扶贫干部与女贫困户结婚：一来二去便熟悉起来","北京暴雨“阵势”有多大？看看这些照片就能感受到","美国指责中国不遵守世贸组织规则？外交部回应","新加坡前高管称中国操纵别国 中国大使发文回应"],
+                      ["中国爆出这条大新闻后 特朗普沉默了印度吃醋了","通过妻子攀附周永康 曾被色情设局的他有了新消息","中国高铁重大升级：车票 再见","去香港有了新规定 小心被罚50万甚至坐牢","管涛：美拟对2000亿美元中国产品征税 但无需高估"]],
+        // tabContents: [{"1":"李克强就电影《我不是药神》引热议作批示","2":"云南女厅官被指是老领导情人 落马后拉下四个男人","3":"中国'唯一不怕水淹'的青岛 是因德国造下水道"},
+        //               {"1":"去香港有了新规定 小心被罚50万甚至坐牢","2":"湖北扶贫干部与女贫困户结婚：一来二去便熟悉起来","3":"北京暴雨阵势有多大？看看这些照片就能感受到"},
+        //               {"1":"中国爆出这条大新闻后 特朗普沉默了印度吃醋了","2":"通过妻子攀附周永康 曾被色情设局的他有了新消息","3":"中国高铁重大升级：车票 再见"}],
+        num: 1,
+    },
+    methods: {
+        tab (index) {
+            this.num = index;
+        },
+    }
+});
+</script>
+</body>
+</html>
